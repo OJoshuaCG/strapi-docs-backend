@@ -124,7 +124,6 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
-.cpanel.yml
 .htaccess
 
 .claude/settings.local.json
