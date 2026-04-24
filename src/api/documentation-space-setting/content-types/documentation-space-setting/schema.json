@@ -1,0 +1,85 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documentation_space_settings",
+  "info": {
+    "singularName": "documentation-space-setting",
+    "pluralName": "documentation-space-settings",
+    "displayName": "Documentation Space Setting",
+    "description": "Configuración visual y de sitio por espacio de documentación: nombre, colores, tipografía, logos, SEO y footer."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "documentation_space": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::documentation-space.documentation-space"
+    },
+    "siteName": {
+      "type": "string",
+      "required": true,
+      "default": "Documentation Portal"
+    },
+    "siteDescription": {
+      "type": "text"
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "sidebarLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "headerLogoSize": {
+      "type": "enumeration",
+      "enum": ["sm", "md", "lg", "xl"],
+      "required": false
+    },
+    "headerLinkText": {
+      "type": "string",
+      "required": false,
+      "maxLength": 50
+    },
+    "headerLinkUrl": {
+      "type": "string",
+      "required": false
+    },
+    "ogDefaultImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "footerText": {
+      "type": "string",
+      "required": false
+    },
+    "typography": {
+      "type": "component",
+      "component": "theme.typography",
+      "required": false
+    },
+    "spacing": {
+      "type": "component",
+      "component": "theme.spacing",
+      "required": false
+    },
+    "colors": {
+      "type": "component",
+      "component": "theme.colors",
+      "required": false
+    },
+    "layout": {
+      "type": "component",
+      "component": "theme.layout",
+      "required": false
+    }
+  }
+}
