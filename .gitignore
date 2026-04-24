@@ -126,3 +126,5 @@ build
 .strapi-cloud.json
 .cpanel.yml
 .htaccess
+
+.claude/settings.local.json
