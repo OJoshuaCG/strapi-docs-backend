@@ -4,28 +4,21 @@ deployment:
     - echo "Iniciando despliegue de Strapi CMS..."
 
     - |
-      # ── Detectar rama y configurar rutas ──────────────────────────────────────
+      # ── Configurar rutas ──────────────────────────────────────────────────────
       BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
       echo "Rama detectada: [$BRANCH]"
 
-      # Ruta al clon del repositorio (donde se ejecuta este script)
+      # El repositorio se clona directamente en el directorio del dominio.
+      # REPO_PATH es el directorio de trabajo actual (public_html/strapi-admin-docs).
       REPO_PATH="$PWD"
 
       # ┌─────────────────────────────────────────────────────────────────────────
-      # │ Ajusta los valores de SITE_PATH y NODE_ACTIVATE según tu servidor:
-      # │
-      # │  SITE_PATH      → directorio donde vive Strapi (server.js, .env,
-      # │                    node_modules ya instalados, public/, etc.)
-      # │                    Solo se actualiza dist/ en cada despliegue.
-      # │
       # │  NODE_ACTIVATE  → ruta al entorno creado por cPanel → Setup Node.js App.
       # │                    Formato: /home/USUARIO/nodevenv/RUTA_APP/VERSION/bin/activate
       # │                    Sustituye USUARIO, RUTA_APP y VERSION con tus valores.
       # └─────────────────────────────────────────────────────────────────────────
-      SITE_PATH="/home/cero208mx/public_html/strapi-admin-docs"
       NODE_ACTIVATE="/home/cero208mx/nodevenv/public_html/strapi-admin-docs/22/bin/activate"
-      echo "REPO_PATH   = [$REPO_PATH]"
-      echo "SITE_PATH   = [$SITE_PATH]"
+      echo "REPO_PATH = [$REPO_PATH]"
 
     - |
       # ── Activar entorno Node.js (CloudLinux nodevenv) ─────────────────────────
@@ -48,13 +41,18 @@ deployment:
       echo "Dependencias instaladas."
 
     - |
-      # ── Compilar: TypeScript del servidor + admin panel → dist/ ───────────────
+      # ── Eliminar dist/ anterior y compilar ────────────────────────────────────
       . "$NODE_ACTIVATE"
       cd "$REPO_PATH"
+
+      if [ -d "$REPO_PATH/dist" ]; then
+        echo "Eliminando dist/ anterior..."
+        rm -rf "$REPO_PATH/dist"
+      fi
+
       echo "Ejecutando npm run build (strapi build)..."
       npm run build
 
-      # Verificar que la compilación produjo los archivos esperados
       if [ ! -d "$REPO_PATH/dist/config" ]; then
         echo "ERROR: dist/config/ no existe — el build falló o fue interrumpido."
         exit 1
@@ -62,23 +60,5 @@ deployment:
       echo "Build completado. Archivos en dist/config/:"
       ls "$REPO_PATH/dist/config/"
 
-    - |
-      # ── Mover dist/ al directorio del sitio ──────────────────────────────────
-      # Eliminar dist/ anterior si existe (evita archivos obsoletos)
-      if [ -d "$SITE_PATH/dist" ]; then
-        echo "Eliminando dist/ anterior en $SITE_PATH..."
-        rm -rf "$SITE_PATH/dist"
-      fi
-
-      if [ -f "$SITE_PATH/server.js" ]; then
-        echo "Eliminando server.js anterior en $SITE_PATH..."
-        rm "$SITE_PATH/server.js"
-      fi
-
-      echo "Moviendo nueva dist/ a $SITE_PATH..."
-      mv "$REPO_PATH/dist" "$SITE_PATH/dist"
-      cp "$REPO_PATH/server.js" "$SITE_PATH/server.js"
-      echo "dist/ desplegada correctamente en $SITE_PATH"
-
-    - touch "$SITE_PATH"/tmp/restart.txt
+    - touch "$REPO_PATH"/tmp/restart.txt
     - echo "Despliegue completado exitosamente."

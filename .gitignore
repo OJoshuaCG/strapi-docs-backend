@@ -124,6 +124,12 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
-.htaccess
 
 .claude/settings.local.json
+
+############################
+# cpanel
+############################
+.htaccess
+public/
+tmp/
