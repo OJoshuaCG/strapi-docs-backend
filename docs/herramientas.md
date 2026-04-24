@@ -9,10 +9,10 @@
 | Herramienta | Versión | Propósito | Documentación |
 |---|---|---|---|
 | **Strapi v5** | 5.42.0 | CMS headless + panel admin + REST API | [strapi-para-desarrolladores.md](./strapi-para-desarrolladores.md) |
-| **MariaDB** | 10.11 | Base de datos relacional (driver `mysql2`) | [mariadb.md](./mariadb.md) |
-| **Docker / Docker Compose** | Engine 24+ | Containerización y orquestación de servicios | [docker.md](./docker.md) |
+| **MariaDB** | 10.11 | Base de datos relacional (driver `mysql2`) | — |
+| **Docker / Docker Compose** | Engine 24+ | Containerización y orquestación de servicios | — |
 | **Wasabi S3** | — | Almacenamiento de archivos en la nube (S3-compatible) | [wasabi-s3.md](./wasabi-s3.md) |
-| **Meilisearch** | v1.12 | Motor de búsqueda full-text (Phase 2) | [meilisearch.md](./meilisearch.md) |
+| **Meilisearch** | v1.12 | Motor de búsqueda full-text (Phase 2) | — |
 | **Node.js** | 20 – 24 | Runtime de JavaScript para Strapi | — |
 | **TypeScript** | ^5 | Tipado estático en el CMS | — |
 
@@ -22,7 +22,7 @@
 
 | Documento | Descripción |
 |---|---|
-| [despliegue.md](./despliegue.md) | Guía paso a paso para llevar el backend a producción |
+| [desploy-cpanel.md](./desploy-cpanel.md) | Guía paso a paso para desplegar el backend en cPanel (sin Docker) |
 | [maintenance.md](./maintenance.md) | Operaciones del día a día: backups, actualizaciones, logs |
 | [troubleshooting.md](./troubleshooting.md) | Resolución de problemas comunes agrupada por categoría |
 | [strapi-for-dummies.md](./strapi-for-dummies.md) | Guía del panel admin para editores de contenido (sin conocimientos técnicos) |

@@ -311,8 +311,8 @@ Panel admin → Settings → Roles → Public
 
 **Verificación técnica:**
 ```bash
-curl "http://localhost:1337/api/documentation-articles?status=published"
-curl "http://localhost:1337/api/documentation-articles?status=draft"
+curl "http://localhost:1337/api/documentation-articles?space=mi-portal&status=published"
+curl "http://localhost:1337/api/documentation-articles?space=mi-portal&status=draft"
 # El segundo requiere autenticación (API token)
 ```
 

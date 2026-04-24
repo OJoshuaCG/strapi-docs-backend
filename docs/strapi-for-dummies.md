@@ -581,7 +581,7 @@ La URL "amigable" del frontend depende de cómo esté implementado el frontend (
 ---
 
 **Subí una imagen pero no aparece en los artículos existentes**
-Subir una imagen a la Media Library no la inserta automáticamente en ningún artículo. Debes ir al artículo, editar el campo Content, posicionar el cursor donde quieres la imagen, y usar el ícono de imagen del editor.
+Subir una imagen a la Media Library no la inserta automáticamente en ningún artículo. Debes ir al artículo, editar el campo **Body**, posicionar el cursor donde quieres la imagen, y usar el ícono de imagen del editor.
 
 ---
 

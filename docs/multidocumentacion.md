@@ -500,12 +500,12 @@ PREVIEW_SECRET = <secret-compartido-con-el-backend>
 
 | Documento | Ruta |
 |---|---|
-| Strapi para desarrolladores | `backend/docs/strapi-para-desarrolladores.md` |
-| Configuración de plugins | `backend/cms/config/plugins.ts` |
-| Bootstrap de permisos públicos | `backend/cms/src/index.ts` |
-| Middleware de filtrado | `backend/cms/src/middlewares/documentation-space-filter.ts` |
-| Schema — space | `backend/cms/src/api/documentation-space/content-types/documentation-space/schema.json` |
-| Schema — section | `backend/cms/src/api/documentation-section/content-types/documentation-section/schema.json` |
-| Schema — category | `backend/cms/src/api/documentation-category/content-types/documentation-category/schema.json` |
-| Schema — article | `backend/cms/src/api/documentation-article/content-types/documentation-article/schema.json` |
-| Schema — space-setting | `backend/cms/src/api/documentation-space-setting/content-types/documentation-space-setting/schema.json` |
+| Strapi para desarrolladores | `docs/strapi-para-desarrolladores.md` |
+| Configuración de plugins | `config/plugins.ts` |
+| Bootstrap de permisos públicos | `src/index.ts` |
+| Middleware de filtrado | `src/middlewares/documentation-space-filter.ts` |
+| Schema — space | `src/api/documentation-space/content-types/documentation-space/schema.json` |
+| Schema — section | `src/api/documentation-section/content-types/documentation-section/schema.json` |
+| Schema — category | `src/api/documentation-category/content-types/documentation-category/schema.json` |
+| Schema — article | `src/api/documentation-article/content-types/documentation-article/schema.json` |
+| Schema — space-setting | `src/api/documentation-space-setting/content-types/documentation-space-setting/schema.json` |
