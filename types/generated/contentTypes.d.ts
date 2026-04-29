@@ -690,6 +690,7 @@ export interface ApiDocumentationSpaceSettingDocumentationSpaceSetting
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    customConfig: Schema.Attribute.JSON;
     documentation_space: Schema.Attribute.Relation<
       'oneToOne',
       'api::documentation-space.documentation-space'

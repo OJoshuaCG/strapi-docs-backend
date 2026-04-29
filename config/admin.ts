@@ -30,10 +30,20 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Admin => 
         { documentId, locale, status }: { documentId: string; locale?: string; status?: string },
       ) {
         const previewSecret = env('PREVIEW_SECRET', '');
-        const frontendUrl = env('FRONTEND_URL', 'http://localhost:5173');
+        // env() devuelve el string completo incluyendo comas si hay múltiples URLs;
+        // usamos env.array() y tomamos el primer elemento para evitar URL malformada
+        const frontendUrl = (env.array('FRONTEND_URL', ['http://localhost:5173']) as string[])[0];
 
         if (!previewSecret) {
           return null;
+        }
+
+        if (uid === 'api::documentation-space-setting.documentation-space-setting') {
+          // Preview servido por el mismo Strapi — muestra la página HTML de tema
+          // STRAPI_URL debe apuntar a la URL pública del servidor (ej: http://localhost:1337)
+          const strapiUrl = env('STRAPI_URL', `http://localhost:${env.int('PORT', 1337)}`);
+          const params = new URLSearchParams({ secret: previewSecret, documentId });
+          return `${strapiUrl}/api/documentation-space-settings/preview?${params.toString()}`;
         }
 
         const searchParams: Record<string, string> = { secret: previewSecret, documentId };

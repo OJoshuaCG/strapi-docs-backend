@@ -27,6 +27,8 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Middlewar
             'market-assets.strapi.io',
             env('WASABI_ENDPOINT', 'https://s3.wasabisys.com'),
           ],
+          // Permite que el iframe de preview del admin cargue la ruta de preview del mismo servidor
+          'frame-src': ["'self'"],
         },
       },
     },
